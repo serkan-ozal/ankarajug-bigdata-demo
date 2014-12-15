@@ -1,8 +1,6 @@
 Ankara JUG Big Data Demo
 ======================
 
-**Not:** Burada bulunan soru örneği basit bir Map/Reduce soru örneğidir ve yarışmadaki sorular biraz daha zor olarak farklı ve daha büyük veri setleri üstünde olacaktır. 
-
 Yapılması gerekenler
 -----------
 
