@@ -24,6 +24,7 @@ Deploy sonucu size ait olan Map/Reduce job jar dosyası `ankarajug-bigdata-demo-
 
 **4.** Map/Reduce job'ını nasıl başlatacağınız ile ilgili gerekli bilgiyi [http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-launch-custom-jar-cli.html](http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-launch-custom-jar-cli.html) adresinden bulabilirsiniz.
 
+<a name="Sample_1"></a>
 Örnek-1
 -----------
 `s3n://ankarajug-bigdata-demo-mapreduce/number-frequency/input/` dizininde bulunan tüm dosyalar içindeki sayıları inceleyerek her bir sayının kaç kere geçtiğini bulan ve sonuçları `s3n://ankarajug-bigdata-demo-mapreduce/number-frequency/output/` dizininde `output.txt` isimli bir dosyaya yazan bir Map/Reduce uygulamasını yazınız. 
@@ -56,6 +57,7 @@ Deploy sonucu size ait olan Map/Reduce job jar dosyası `ankarajug-bigdata-demo-
 ...
 ~~~
 
+<a name="Sample_2"></a>
 Örnek-2
 -----------
 `s3n://ankarajug-bigdata-demo-mapreduce/log-data/input/` dizininde bulunan tüm dosyalar içindeki log kayıtlarını inceleyerek belirtilen başlangıç ve bitiş tarihleri arasında kaç tane log kaydı olduğunu bulan ve sonucu  `s3n://ankarajug-bigdata-demo-mapreduce/log-data/output/` dizininde `output.txt` isimli bir dosyaya yazan bir Map/Reduce uygulamasını yazınız. 
