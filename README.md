@@ -24,11 +24,11 @@ Deploy sonucu size ait olan Map/Reduce job jar dosyası `ankarajug-bigdata-demo-
 
 **4.** Map/Reduce job'ını nasıl başlatacağınız ile ilgili gerekli bilgiyi [http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-launch-custom-jar-cli.html](http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-launch-custom-jar-cli.html) adresinden bulabilirsiniz.
 
-**5.** Örnek Hadoop 2 - YARN ile yapıldığı için Map/Reduce job jar'ını AWS üstünde **AMI version 3.0.3** ve **Hadoop version 2.2.0** ile çalıştırmanız gerekmektedir.
-
-Örnek
+Örnek-1
 -----------
-`s3n://ankarajug-bigdata-demo-mapreduce/input/` dizininde bulunan tüm dosyalar içindeki sayılar incelenerek her bir sayının kaç kere geçtiğini bulan bir Map/Reduce uygulamasını yazınız. 
+`s3n://ankarajug-bigdata-demo-mapreduce/number-frequency/input/` dizininde bulunan tüm dosyalar içindeki sayıları inceleyerek her bir sayının kaç kere geçtiğini bulan ve sonuçları `s3n://ankarajug-bigdata-demo-mapreduce/number-frequency/output/` dizininde `output.txt` isimli bir dosyaya yazan bir Map/Reduce uygulamasını yazınız. 
+
+
 
 **Açıklamalar:**
 
@@ -36,14 +36,49 @@ Deploy sonucu size ait olan Map/Reduce job jar dosyası `ankarajug-bigdata-demo-
 2. Çıktıda her satırda sayı ve o sayının kaç kere geçtiği bilgisi olacaktır. 
 3. Çıktıdaki sayı ve sıklık değeri arasında bir tane **boşluk** olacaktır. 
 
-**Örnek çıktı:**
+**Örnek Girdi:**
+
+~~~~ 
+123
+456
+789
+...
+~~~~
+
+**Örnek Çıktı:**
 
 ~~~
 1 1234
 ...
-675 2034
+456 2345
+...
+789 3456
 ...
 ~~~
 
+Örnek-2
+-----------
+`s3n://ankarajug-bigdata-demo-mapreduce/log-data/input/` dizininde bulunan tüm dosyalar içindeki log kayıtlarını inceleyerek belirtilen başlangıç ve bitiş tarihleri arasında kaç tane log kaydı olduğunu bulan ve sonucu  `s3n://ankarajug-bigdata-demo-mapreduce/log-data/output/` dizininde `output.txt` isimli bir dosyaya yazan bir Map/Reduce uygulamasını yazınız. 
 
+**Açıklamalar:**
 
+1. Her satırda JSON formatında sadece bir log kaydı vardır. 
+2. Uygulama başlangış ve bitiş tarihlerini parametre olarak alacaktır ve bu tarihler arasındaki (bu tarihler de dahil) log kayıtlarının sayısı bulunacaktır. 
+3. Uygulamaya parametre olarak geçilen tarih formatları `dd-MM-yyyy` formatında yani **2 haneli gün** + **"-"** + **2 haneli ay** + **"-"** + **4 haneli yıl** formatında olacaktır.  
+4. Eğer her iki tarih de (başlangıç ve bitiş tarihi) parametre olarak girilmez ise tarih koşulu aranmayacak ve tüm log kayıtları sayılacaktır.
+5. Eğer sadece bir tane tarih girilmişse, o tarih başlangıç tarihi olarak kabul edilecek ve bitiş tarihi koşulu aranmayacaktır. Bu durumda başlangıç tarihinden itibaren olan (başlangıç tarihi dahil) tüm log kayıtları sayılacaktır.  
+6. Çıktıda tek bir satırda belirtilen tarih aralığından toplam log kaydı sayısı değeri olacaktır.
+
+**Örnek Girdi:**
+
+~~~~ json
+{"username":"user_1","ip":"111.111.111","date":"Jan 11, 2001 1:22:33 AM"}
+{"username":"user_2","ip":"222.222.222","date":"Sep 22, 2002 2:33:44 AM"}
+...
+~~~~
+
+**Örnek Çıktı:**
+
+~~~
+1500000
+~~~
