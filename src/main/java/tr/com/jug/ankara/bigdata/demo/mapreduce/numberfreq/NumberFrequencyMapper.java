@@ -29,35 +29,35 @@ import org.apache.log4j.Logger;
  */
 public class NumberFrequencyMapper extends Mapper<LongWritable, Text, IntWritable, IntWritable> {
 
-	private static final Logger logger = Logger.getLogger(NumberFrequencyMapper.class); 
+    private static final Logger logger = Logger.getLogger(NumberFrequencyMapper.class); 
 
-	private final static IntWritable ONE = new IntWritable(1);
-	
+    private final static IntWritable ONE = new IntWritable(1);
+    
     @Override
     public void run(Context context) throws IOException, InterruptedException {
-    	init(context);
-    	super.run(context);
+        init(context);
+        super.run(context);
     }
 
     protected void init(Context context) {
-    	try {
-    		logger.info("NumberFrequencyMapper has been initialized ...");
-    	}
-    	catch (Throwable t) {
-    		logger.error("Error occured while initializing Mapper", t);
-    	}
-    }
-
-	@Override
-    protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         try {
-        	String line = value.toString();
-    		int number = Integer.parseInt(line);
-    		// Increase passed number occurrence by "1"
-    		context.write(new IntWritable(number), ONE);
+            logger.info("NumberFrequencyMapper has been initialized ...");
         }
         catch (Throwable t) {
-        	logger.error("Error occured while executing map function of NumberFrequencyMapper", t);
+            logger.error("Error occured while initializing Mapper", t);
+        }
+    }
+
+    @Override
+    protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+        try {
+            String line = value.toString();
+            int number = Integer.parseInt(line);
+            // Increase passed number occurrence by "1"
+            context.write(new IntWritable(number), ONE);
+        }
+        catch (Throwable t) {
+            logger.error("Error occured while executing map function of NumberFrequencyMapper", t);
         }
     }
 

@@ -24,23 +24,23 @@ import tr.com.jug.ankara.bigdata.demo.mapreduce.numberfreq.NumberFrequencyMapRed
  */
 public class MapReduceJobFactory {
 
-	private MapReduceJobFactory() {
-		
-	}
-	
-	public static MapReduceJob getMapReduceJob(int jobTypeCode) {
-		MapReduceJobType mapReduceJobType = MapReduceJobType.getByCode(jobTypeCode);
-		if (mapReduceJobType == null) {
-			throw new IllegalArgumentException("Unknown map-reduce job type code: " + jobTypeCode);
-		}
-		switch (mapReduceJobType) {
-			case NUMBER_FREQUENCY_JOB:
-				return new NumberFrequencyMapReduceJob();
-			case LOG_DATA_JOB:
-				return new LogDataMapReduceJob();
-			default:
-				throw new IllegalArgumentException("Unknown map-reduce job type: " + mapReduceJobType);
-		}
-	}
-	
+    private MapReduceJobFactory() {
+        
+    }
+    
+    public static MapReduceJob getMapReduceJob(int jobTypeCode) {
+        MapReduceJobType mapReduceJobType = MapReduceJobType.getByCode(jobTypeCode);
+        if (mapReduceJobType == null) {
+            throw new IllegalArgumentException("Unknown map-reduce job type code: " + jobTypeCode);
+        }
+        switch (mapReduceJobType) {
+            case NUMBER_FREQUENCY_JOB:
+                return new NumberFrequencyMapReduceJob();
+            case LOG_DATA_JOB:
+                return new LogDataMapReduceJob();
+            default:
+                throw new IllegalArgumentException("Unknown map-reduce job type: " + mapReduceJobType);
+        }
+    }
+    
 }

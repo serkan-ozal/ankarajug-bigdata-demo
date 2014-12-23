@@ -21,15 +21,15 @@ package tr.com.jug.ankara.bigdata.demo.mapreduce;
  */
 public abstract class BaseMapReduceJob implements MapReduceJob {
 
-	protected MapReduceJobType mapReduceJobType;
-	
-	public BaseMapReduceJob(MapReduceJobType mapReduceJobType) {
-		this.mapReduceJobType = mapReduceJobType;
-	}
-	
-	@Override
-	public MapReduceJobType getMapReduceJobType() {
-		return mapReduceJobType;
-	}
-	
+    protected MapReduceJobType mapReduceJobType;
+    
+    public BaseMapReduceJob(MapReduceJobType mapReduceJobType) {
+        this.mapReduceJobType = mapReduceJobType;
+    }
+    
+    @Override
+    public MapReduceJobType getMapReduceJobType() {
+        return mapReduceJobType;
+    }
+    
 }

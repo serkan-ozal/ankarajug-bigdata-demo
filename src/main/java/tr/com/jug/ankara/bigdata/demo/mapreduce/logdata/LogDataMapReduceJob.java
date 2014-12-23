@@ -42,25 +42,25 @@ import tr.com.jug.ankara.bigdata.demo.mapreduce.MapReduceJobType;
  */
 public class LogDataMapReduceJob extends BaseMapReduceJob {
 
-	public LogDataMapReduceJob() {
-		super(MapReduceJobType.LOG_DATA_JOB);
-	}
+    public LogDataMapReduceJob() {
+        super(MapReduceJobType.LOG_DATA_JOB);
+    }
 
-	@Override
-	public void doConfig(String[] args, Job job, JobConf conf, Path inputPath, Path outputPath) {
-		job.setMapOutputKeyClass(NullWritable.class);
-		job.setMapOutputValueClass(IntWritable.class);
-		
-		job.setOutputKeyClass(NullWritable.class);
-		job.setOutputValueClass(IntWritable.class);
-		 
-		job.setMapperClass(LogDataMapper.class);
-		job.setReducerClass(LogDataReducer.class);
+    @Override
+    public void doConfig(String[] args, Job job, JobConf conf, Path inputPath, Path outputPath) {
+        job.setMapOutputKeyClass(NullWritable.class);
+        job.setMapOutputValueClass(IntWritable.class);
+        
+        job.setOutputKeyClass(NullWritable.class);
+        job.setOutputValueClass(IntWritable.class);
+         
+        job.setMapperClass(LogDataMapper.class);
+        job.setReducerClass(LogDataReducer.class);
 
-		job.setInputFormatClass(TextInputFormat.class);
-		job.setOutputFormatClass(TextOutputFormat.class);
-		
-		job.setNumReduceTasks(1); // Because we are using "NullWritable". Only 1 reducer will be used
-	}
+        job.setInputFormatClass(TextInputFormat.class);
+        job.setOutputFormatClass(TextOutputFormat.class);
+        
+        job.setNumReduceTasks(1); // Because we are using "NullWritable". Only 1 reducer will be used
+    }
 
 }

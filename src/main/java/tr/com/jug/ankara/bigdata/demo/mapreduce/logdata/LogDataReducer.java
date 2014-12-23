@@ -29,36 +29,36 @@ import org.apache.log4j.Logger;
  */
 public class LogDataReducer extends Reducer<NullWritable, IntWritable, NullWritable, IntWritable> {
 
-	private static final Logger logger = Logger.getLogger(LogDataReducer.class); 
+    private static final Logger logger = Logger.getLogger(LogDataReducer.class); 
     
     @Override
     public void run(Context context) throws IOException, InterruptedException {
-    	init(context);
-    	super.run(context);
+        init(context);
+        super.run(context);
     }
     
-	protected void init(Context context) {
-    	try {
-    		logger.info("Reducer has been initialized ...");
-    	}
-    	catch (Throwable t) {
-    		logger.error("Error occured while initializing LogDataReducer", t);
-    	}
+    protected void init(Context context) {
+        try {
+            logger.info("Reducer has been initialized ...");
+        }
+        catch (Throwable t) {
+            logger.error("Error occured while initializing LogDataReducer", t);
+        }
     }
 
     protected void reduce(NullWritable key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
-		try {
-			int total = 0;
-			Iterator<IntWritable> i = values.iterator();
-			// Calculate sum of non-filtered log counts
-			while (i.hasNext()) {
-				total += i.next().get();
-			}
-			// Write only non-filtered log count
-			context.write(NullWritable.get(), new IntWritable(total));
-		}
+        try {
+            int total = 0;
+            Iterator<IntWritable> i = values.iterator();
+            // Calculate sum of non-filtered log counts
+            while (i.hasNext()) {
+                total += i.next().get();
+            }
+            // Write only non-filtered log count
+            context.write(NullWritable.get(), new IntWritable(total));
+        }
         catch (Throwable t) {
-        	logger.error("Error occured while executing reduce function of LogDataReducer", t);
+            logger.error("Error occured while executing reduce function of LogDataReducer", t);
         }    
     }
 

@@ -28,36 +28,36 @@ import org.apache.log4j.Logger;
  */
 public class NumberFrequencyReducer extends Reducer<IntWritable, IntWritable, IntWritable, IntWritable> {
 
-	private static final Logger logger = Logger.getLogger(NumberFrequencyReducer.class); 
+    private static final Logger logger = Logger.getLogger(NumberFrequencyReducer.class); 
     
     @Override
     public void run(Context context) throws IOException, InterruptedException {
-    	init(context);
-    	super.run(context);
+        init(context);
+        super.run(context);
     }
     
-	protected void init(Context context) {
-    	try {
-    		logger.info("NumberFrequencyReducer has been initialized ...");
-    	}
-    	catch (Throwable t) {
-    		logger.error("Error occured while initializing NumberFrequencyReducer", t);
-    	}
+    protected void init(Context context) {
+        try {
+            logger.info("NumberFrequencyReducer has been initialized ...");
+        }
+        catch (Throwable t) {
+            logger.error("Error occured while initializing NumberFrequencyReducer", t);
+        }
     }
 
     protected void reduce(IntWritable key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
-		try {
-			int sum = 0;
-			Iterator<IntWritable> i = values.iterator();
-			// Calculate count of specified number (key) emitted by different mappers 
-			while (i.hasNext()) {
-				sum += i.next().get();
-			}
-			// Write total count of specified number (key)
-			context.write(key, new IntWritable(sum));
-		}
+        try {
+            int sum = 0;
+            Iterator<IntWritable> i = values.iterator();
+            // Calculate count of specified number (key) emitted by different mappers 
+            while (i.hasNext()) {
+                sum += i.next().get();
+            }
+            // Write total count of specified number (key)
+            context.write(key, new IntWritable(sum));
+        }
         catch (Throwable t) {
-        	logger.error("Error occured while executing reduce function of NumberFrequencyReducer", t);
+            logger.error("Error occured while executing reduce function of NumberFrequencyReducer", t);
         }    
     }
 

@@ -26,26 +26,26 @@ import java.util.Random;
  */
 public class NumberDataGenerator {
 
-	private static final String NEW_LINE = System.getProperty("line.separator");
-	private static final String DIRECTORY_PATH = "map-reduce" + File.separator + "number-frequency" + File.separator;
-	private static final int BLOCK_COUNT = 9;
-	private static final int NUMBER_COUNT_IN_A_BLOCK = 25000000; // To be close to 128 MB chunk
-	
-	public static void main(String[] args) throws IOException {
-		Random r = new Random();
-		File outputDirectory = new File(DIRECTORY_PATH);
-		outputDirectory.mkdirs();
-		for (int i = 0; i < BLOCK_COUNT; i++) {
-			File outputPath = new File(outputDirectory.getAbsolutePath() + File.separator + "input-" + (i + 1) + ".txt");
-			outputPath.createNewFile();
-			FileWriter fw = new FileWriter(outputPath);
-			for (int j = 0; j < NUMBER_COUNT_IN_A_BLOCK; j++) {
-				fw.write(String.valueOf(r.nextInt(1000)) + NEW_LINE);
-			}
-			fw.flush();
-			fw.close();
-		}	
-		System.gc();
-	}
+    private static final String NEW_LINE = System.getProperty("line.separator");
+    private static final String DIRECTORY_PATH = "map-reduce" + File.separator + "number-frequency" + File.separator;
+    private static final int BLOCK_COUNT = 9;
+    private static final int NUMBER_COUNT_IN_A_BLOCK = 25000000; // To be close to 128 MB chunk
+    
+    public static void main(String[] args) throws IOException {
+        Random r = new Random();
+        File outputDirectory = new File(DIRECTORY_PATH);
+        outputDirectory.mkdirs();
+        for (int i = 0; i < BLOCK_COUNT; i++) {
+            File outputPath = new File(outputDirectory.getAbsolutePath() + File.separator + "input-" + (i + 1) + ".txt");
+            outputPath.createNewFile();
+            FileWriter fw = new FileWriter(outputPath);
+            for (int j = 0; j < NUMBER_COUNT_IN_A_BLOCK; j++) {
+                fw.write(String.valueOf(r.nextInt(1000)) + NEW_LINE);
+            }
+            fw.flush();
+            fw.close();
+        }   
+        System.gc();
+    }
 
 }

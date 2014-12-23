@@ -25,9 +25,9 @@ import org.apache.hadoop.mapreduce.Job;
  */
 public interface MapReduceJob {
 
-	String JOB_ARGUMENT_NAME_PREFIX = "arg";
-	
-	MapReduceJobType getMapReduceJobType();
-	void doConfig(String[] args, Job job, JobConf conf, Path inputPath, Path outputPath);
-	
+    String JOB_ARGUMENT_NAME_PREFIX = "arg";
+    
+    MapReduceJobType getMapReduceJobType();
+    void doConfig(String[] args, Job job, JobConf conf, Path inputPath, Path outputPath);
+    
 }

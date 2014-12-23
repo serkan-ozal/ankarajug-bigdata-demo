@@ -21,26 +21,26 @@ package tr.com.jug.ankara.bigdata.demo.mapreduce;
  */
 public enum MapReduceJobType {
 
-	NUMBER_FREQUENCY_JOB(1),
-	LOG_DATA_JOB(2);
-	
-	int code;
-	
-	MapReduceJobType(int code) {
-		this.code = code;
-	}
-	
-	public int getCode() {
-		return code;
-	}
-	
-	public static MapReduceJobType getByCode(int code) {
-		for (MapReduceJobType jobType : values()) {
-			if (jobType.code == code) {
-				return jobType;
-			}
-		}
-		return null;
-	}
-	
+    NUMBER_FREQUENCY_JOB(1),
+    LOG_DATA_JOB(2);
+    
+    int code;
+    
+    MapReduceJobType(int code) {
+        this.code = code;
+    }
+    
+    public int getCode() {
+        return code;
+    }
+    
+    public static MapReduceJobType getByCode(int code) {
+        for (MapReduceJobType jobType : values()) {
+            if (jobType.code == code) {
+                return jobType;
+            }
+        }
+        return null;
+    }
+    
 }

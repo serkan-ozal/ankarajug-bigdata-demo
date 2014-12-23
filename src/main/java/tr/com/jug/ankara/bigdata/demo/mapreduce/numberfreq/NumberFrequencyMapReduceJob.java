@@ -39,23 +39,23 @@ import tr.com.jug.ankara.bigdata.demo.mapreduce.MapReduceJobType;
  */
 public class NumberFrequencyMapReduceJob extends BaseMapReduceJob {
 
-	public NumberFrequencyMapReduceJob() {
-		super(MapReduceJobType.NUMBER_FREQUENCY_JOB);
-	}
+    public NumberFrequencyMapReduceJob() {
+        super(MapReduceJobType.NUMBER_FREQUENCY_JOB);
+    }
 
-	@Override
-	public void doConfig(String[] args, Job job, JobConf conf, Path inputPath, Path outputPath) {
-		job.setMapOutputKeyClass(IntWritable.class);
-		job.setMapOutputValueClass(IntWritable.class);
-		
-		job.setOutputKeyClass(IntWritable.class);
-		job.setOutputValueClass(IntWritable.class);
-		 
-		job.setMapperClass(NumberFrequencyMapper.class);
-		job.setReducerClass(NumberFrequencyReducer.class);
+    @Override
+    public void doConfig(String[] args, Job job, JobConf conf, Path inputPath, Path outputPath) {
+        job.setMapOutputKeyClass(IntWritable.class);
+        job.setMapOutputValueClass(IntWritable.class);
+        
+        job.setOutputKeyClass(IntWritable.class);
+        job.setOutputValueClass(IntWritable.class);
+         
+        job.setMapperClass(NumberFrequencyMapper.class);
+        job.setReducerClass(NumberFrequencyReducer.class);
 
-		job.setInputFormatClass(TextInputFormat.class);
-		job.setOutputFormatClass(TextOutputFormat.class);
-	}
+        job.setInputFormatClass(TextInputFormat.class);
+        job.setOutputFormatClass(TextOutputFormat.class);
+    }
 
 }
