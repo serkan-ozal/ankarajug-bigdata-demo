@@ -37,7 +37,7 @@ import org.apache.log4j.Logger;
 /*
  * AWS EMR URL          : https://console.aws.amazon.com/elasticmapreduce/home?region=us-east-1
  * Spot Instance Prices : http://aws.amazon.com/ec2/purchasing-options/spot-instances/#pricing
- * Spot Instance Price  : 0.01$
+ * Spot Instance Price  : 0.01$ for "m1.medium" instance type
  * Jar Location         : s3://ankarajug-bigdata-demo-482514484979/ankarajug-bigdata-demo-mapreduce-job.jar
  */
 public class MapReduceDriver {
